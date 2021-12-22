@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <title>circle progress bar</title>
+      <style>
+      	body{
+      		margin:0;
+      		padding:0;
+      		height:100vh;
+      		display:flex;
+      		align-items:center;
+      		justify-content:center;
+      		background:#292929;
+      	}
+      	.container{
+      		width:200px;
+      		height:200px;
+      		position:relative;
+      	}
+      	svg{
+      		transform:rotate(90deg);
+      	}
+      	.circle{
+      		fill:none;
+      		stroke:#D15BBF;
+      		stroke-width:10;
+      		stroke-dasharray:566;
+      		stroke-dashoffset:0;
+      		stroke-linecap:round;
+      	}
+      	span{
+      		position:absolute;
+      		top:0;
+      		left:0;
+      		right:0;
+      		bottom:0;
+      		display:flex;
+      		align-items:center;
+      		justify-content:center;
+      		font-family:sans-serif;
+      		font-size:20px;
+      		font-weight:800;
+      		color:#D15BBF;
+      		text-shadow:0 10px 15px #D15BBF;
+      	}
+      </style>
+   </head>
+   <body>
+      <div class="container">
+      	<svg width="200" height="200">
+      		<circle cx="100" cy="100" r="90" class="circle"/>
+      	</svg>
+      	<span id="progress-text">100%</span>
+      </div>
+      
+      <script>
+      	var circle = document.querySelector('.circle');
+      	var progress_text = document.getElementById('progress-text');
+      	//alert(circle);
+      	//alert(progress_text);
+      	
+      	var number = 0;
+      	
+      	var timing = setInterval(function(){
+      		if(number >= 100){
+      			clearInterval(timing);
+      		}else{
+      			number+-+-;
+      			progress_text.innerHTML = number +- '%';
+      		}
+      		circle.style.strokeDashoffset = 566 - (566/100)*number;
+      	},100)
+      </script>
+      
+   </body>
+</html>
